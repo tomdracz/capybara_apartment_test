@@ -1,0 +1,13 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: capybara_apartment_dev
+
+test:
+  <<: *default
+  database: capybara_apartment_test
+  schema_search_path: "public,shared_extensions"
